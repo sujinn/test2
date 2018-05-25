@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
-//#include <QMessageBox>
+#include <QMessageBox>
+#include <QDesktopServices>
+#include <QUrl>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,12 +26,16 @@ void MainWindow::on_FolderOpen_clicked()
 
 void MainWindow::on_VideoAdd_clicked()
 {
-    QString Filename=QFileDialog::getOpenFileName(
+    QString Filename=QFileDialog::getOpenFileName(   
                 this,
                 tr("Open File"),
                 "C://",
                 "All Files (*.*);;Video File (*.avi);;Video File (*.mp4) "
 
                 );
+    
+    QDesktopServices::openUrl(QUrl("file:///"+filename,QUrl::TolerantMode));  
+    //   QMessageBox::information(this,tr("File Name"),filename);
+
 
 }
