@@ -32,5 +32,4 @@ void MainWindow::on_VideoAdd_clicked()
 
                 );
 
-   QMessageBox::information(this,tr("File Name"),Filename);
 }
